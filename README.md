@@ -10,11 +10,15 @@ Esta es una API REST desarrollada con Django Rest Framework (DRF) para una red s
 
 - **Publicaciones:** Los usuarios autenticados pueden crear, editar y eliminar sus propias publicaciones. Además, pueden acceder a la lista completa de publicaciones disponibles en la plataforma.
 
-- **Permisos Personalizados:** Se han implementado permisos personalizados para controlar el acceso a las acciones. Los usuarios autenticados tienen privilegios para crear, editar y eliminar sus propias publicaciones. Sin embargo, todos los usuarios, autenticados o no, pueden visualizar todas las publicaciones en la plataforma.
+- **Comentarios en Publicaciones:** Los usuarios pueden agregar comentarios a las publicaciones existentes, editarlos y eliminarlos. Los endpoints de los comentarios están anidados en los endpoints de las publicaciones, lo que permite una interacción fluida.
+
+- **Permisos Personalizados:** Se han implementado permisos personalizados para controlar el acceso a las acciones. Los usuarios autenticados tienen privilegios para crear, editar y eliminar sus propias publicaciones y comentarios. Todos los usuarios, autenticados o no, pueden visualizar todas las publicaciones y comentarios en la plataforma.
 
 - **Interacción Social:** Se ha agregado la funcionalidad de "me gusta" a las publicaciones. Los usuarios pueden dar y quitar "me gusta" a las publicaciones de otros usuarios.
 
-- **Paginación:** La API utiliza la paginación para mejorar la experiencia del usuario al visualizar listas de usuarios y publicaciones. Esto permite cargar resultados de manera eficiente y mejorar el rendimiento en casos de conjuntos de datos grandes.
+- **Pruebas Unitarias:** Se realizaron pruebas unitarias exhaustivas utilizando pytest en los modelos y ViewSets de todas las aplicaciones para garantizar su funcionalidad y detectar posibles problemas.
+
+- **Paginación:** La API utiliza la paginación para mejorar la experiencia del usuario al visualizar listas de usuarios, publicaciones y comentarios. Esto permite cargar resultados de manera eficiente y mejorar el rendimiento en casos de conjuntos de datos grandes.
 
 ## Instalación y Uso
 
