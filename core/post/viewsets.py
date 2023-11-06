@@ -7,6 +7,8 @@ from core.post.serializers import PostSerializer
 from core.auth.permissions import UserPermission
 from rest_framework.decorators import action
 
+from rest_framework.exceptions import PermissionDenied
+
 class PostViewSet(AbstractViewSet):
     http_method_names = ('post', 'get', 'put', 'delete')
     permission_classes = (UserPermission,)
@@ -26,6 +28,11 @@ class PostViewSet(AbstractViewSet):
         self.perform_create(serializer)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     
+    def perform_destroy(self, instance):
+        if self.request.user != instance.author:
+            raise PermissionDenied("no tienes permiso para eliminar este post")
+        instance.delete()
+    
     @action(methods=['post'], detail=True)
     def like(self, request, *args, **kwargs):
         post = self.get_object()
@@ -41,3 +48,4 @@ class PostViewSet(AbstractViewSet):
         user.remove_like(post)
         serializer = self.serializer_class(post)
         return Response(serializer.data, status=status.HTTP_200_OK)
+
